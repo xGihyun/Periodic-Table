@@ -1,0 +1,98 @@
+---
+import PeriodicTable from "../components/PeriodicTable";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Periodic Table</title>
+	</head>
+	<body class="w-full h-screen">
+		<main class="h-full flex justify-center items-center bg-black">
+      <PeriodicTable client:load />
+    </main>
+	</body>
+</html>
+
+<style is:global>
+  
+  .periodic-table{
+    @apply h-full grid 2xl:grid-cols-18-80px 2xl:grid-rows-10-80px grid-cols-18-60px grid-rows-10-60px gap-1;
+  }
+
+  .element{
+    @apply 2xl:w-[80px] w-[60px] p-2 text-white flex justify-center 
+      flex-col cursor-pointer transition duration-200;
+  }
+
+  /* Top right */
+  [data-name="Helium"]{
+    @apply col-start-18;
+  }
+
+  /* To the right */
+  [data-name="Boron"],
+  [data-name="Aluminum"]{
+    @apply col-start-13;
+  }
+
+  [data-name="Hafnium"],
+  [data-name="Rutherfordium"]{
+    @apply col-start-4;
+  }
+
+  .periodic-table > div:nth-child(n+57):nth-last-child(n+48){
+    @apply row-start-9;
+  }
+
+  .periodic-table > div:nth-child(n+89):nth-last-child(n+16){
+    @apply row-start-10;
+  }
+
+  [data-group="nonmetal"]{
+    @apply border-b-8 border-blue-700 hover:border-blue-500;
+  }
+
+  [data-group="alkali metal"]{
+    @apply border-b-8 border-red-700 hover:border-red-500;
+  }
+
+  [data-group="alkaline earth metal"]{
+    @apply border-b-8 border-amber-700 hover:border-amber-500;
+  }
+
+  [data-group="transition metal"]{
+    @apply border-b-8 border-yellow-500 hover:border-yellow-300;
+  }
+
+  [data-group="metal"]{
+    @apply border-b-8 border-green-600 hover:border-green-400;
+  }
+
+  [data-group="lanthanoid"]{
+    @apply border-b-8 border-lime-500 hover:border-lime-300;
+  }
+
+  [data-group="actinoid"]{
+    @apply border-b-8 border-emerald-500 hover:border-emerald-300;
+  }
+
+  [data-group="metalloid"]{
+    @apply border-b-8 border-cyan-500 hover:border-cyan-300;
+  }
+
+  [data-group="halogen"]{
+    @apply border-b-8 border-fuchsia-600 hover:border-fuchsia-400;
+  }
+
+  [data-group="post-transition metal"]{
+    @apply border-b-8 border-indigo-500 hover:border-indigo-300;
+  }
+
+  [data-group="noble gas"]{
+    @apply border-b-8 border-rose-600 hover:border-rose-400;
+  }
+</style>
